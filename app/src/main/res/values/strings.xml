@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HNGX 1</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="full_about"> I\'m a
+Independent,self- motivated and personable android developer eager to join your company to help in developing android applications with kotlin, modern android development patterns and architectures.
+</string>
+    <string name="user_name">Joseph Timothy</string>
+    <string name="sub_user_name">(Joseph00)</string>
+    <string name="job_title">Native Mobile Developer(Kotlin)</string>
+    <string name="short_info">Android developer currently undergoing internship @HNG, familiar with components used to build android apps. </string>
+    <string name="git_link">https://github.com/J-cart</string>
+</resources>
