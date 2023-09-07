@@ -7,11 +7,6 @@
         android:title="Refresh"
         />
     <item
-        android:id="@+id/view_option"
-        android:title="Show desktop site"
-        android:checkable="true"
-        />
-    <item
         android:id="@+id/chrome_option"
         android:title="Open in  browser" />
 

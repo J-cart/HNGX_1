@@ -19,7 +19,6 @@ import com.tutorials.hngx1.databinding.FragmentGithubWebViewBinding
 class GithubWebView : Fragment() {
     private lateinit var binding: FragmentGithubWebViewBinding
     private val gitUrl by lazy { requireContext().getString(R.string.git_link) }
-    private var isChecked = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,11 +33,6 @@ class GithubWebView : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpWebView()
-        if (isChecked) {
-            binding.webView.settings.userAgentString = DESKTOP_USER_AGENT//"eliboM"
-        } else {
-            binding.webView.settings.userAgentString = MOBILE_USER_AGENT//"Mobile"
-        }
         binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -80,11 +74,9 @@ class GithubWebView : Fragment() {
 
         binding.webView.apply {
             webViewClient = webClient
-            // Enable responsive layout
             settings.useWideViewPort = true
-            // Zoom out if the content width is greater than the width of the viewport
             settings.loadWithOverviewMode = true
-
+            settings.setSupportZoom(true)
 
             loadUrl(gitUrl)
             webChromeClient = chromeClient
@@ -105,17 +97,12 @@ class GithubWebView : Fragment() {
     private fun setUpPopUpMenu(view: View) {
         val popupMenu = PopupMenu(requireContext(), view)
         popupMenu.menuInflater.inflate(R.menu.pop_delete_menu, popupMenu.menu)
-        val viewMode = popupMenu.menu.findItem(R.id.view_option)
-        viewMode.isChecked = isChecked
+
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.reload_option -> {
                     binding.webView.stopLoading()
                     binding.webView.reload()
-                    true
-                }
-                R.id.view_option -> {
-                    isChecked = !isChecked
                     true
                 }
                 R.id.chrome_option -> {
